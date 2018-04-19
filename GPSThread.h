@@ -23,23 +23,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#include <QList>
 #include <QTcpSocket>
 #include <QThread>
 
 class GPSThread :
 	public QThread
 {
+	Q_OBJECT
+
 public:
 	GPSThread(int socketDescriptor);
 
 	void run() override;
+	void stop(void)
+	{
+		_running = false;
+	}
 
 signals:
 	void error(QTcpSocket::SocketError socketError);
 
 private:
+	QString						_clientName;
 	int							_socketDescriptor;
 	bool						_running;
 };
+
+typedef QList<GPSThread*> GPSThreads;
 
 #endif // GPSTHREAD_H

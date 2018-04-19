@@ -24,6 +24,7 @@
 // SOFTWARE.
 
 #include <QDialog>
+#include <QSystemTrayIcon>
 
 #include "ui_gpswindow.h"
 
@@ -36,6 +37,10 @@ class GPSWindow :
 public:
 	explicit GPSWindow(QWidget* parent = Q_NULLPTR);
 	~GPSWindow();
+
+private:
+	QSystemTrayIcon*			_systemTrayIcon;
+	QMenu*						_systemTrayMenu;
 };
 
 #endif // GPSWINDOW_H

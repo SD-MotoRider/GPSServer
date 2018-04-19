@@ -23,12 +23,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#include "GPSThread.h"
+
 #include <QTcpServer>
 
 class GPSServer :
 	public QTcpServer
 {
 	Q_OBJECT
+
 public:
 	static GPSServer* getInstance()
 	{
@@ -41,6 +44,8 @@ public:
 		return instance;
 	}
 
+	void stop(void);
+
 protected:
 	void incomingConnection(qintptr socketDescriptor) override;
 
@@ -48,6 +53,8 @@ private:
 	GPSServer();
 	GPSServer(GPSServer const&) = delete;
 	void operator=(GPSServer const&) = delete;
+
+	GPSThreads					_gpsThreads;
 };
 
 #endif // GPSSERVER_H
