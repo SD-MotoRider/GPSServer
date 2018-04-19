@@ -32,6 +32,6 @@ void GPSServer::stop()
 			gpsThread++;
 		}
 
-
+		_gpsThreads.clear();
 	}
 }

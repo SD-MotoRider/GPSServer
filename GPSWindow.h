@@ -23,6 +23,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#include <QAction>
 #include <QDialog>
 #include <QSystemTrayIcon>
 
@@ -41,6 +42,8 @@ public:
 private:
 	QSystemTrayIcon*			_systemTrayIcon;
 	QMenu*						_systemTrayMenu;
+	QAction*					_showUiAction;
+	QAction*					_quitAction;
 };
 
 #endif // GPSWINDOW_H
